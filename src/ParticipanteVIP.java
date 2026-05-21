@@ -1,15 +1,23 @@
-public class ParticipanteVIP extends Participante {
+public class ParticipanteVIP
+extends Participante{
 
-    public ParticipanteVIP(String nome, String email, String tipoParticipacao) {
-        super(nome, email, tipoParticipacao);
+    private String beneficios;
+
+    public ParticipanteVIP(
+            String nome,
+            String email,
+            String beneficios){
+
+        super(nome,email);
+
+        this.beneficios=beneficios;
     }
 
-    @Override
-    public void exibirDados() {
+    public void acessoVip(){
 
-        System.out.println("===== PARTICIPANTE VIP =====");
-        System.out.println("Nome: " + nome);
-        System.out.println("Email: " + email);
-        System.out.println("Tipo: VIP - " + getTipoParticipacao());
+        System.out.println(
+        beneficios);
+
     }
+
 }

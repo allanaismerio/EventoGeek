@@ -1,27 +1,53 @@
 import java.util.ArrayList;
 
-public class Evento {
+public class Evento implements Exibivel {
 
-    private String nomeEvento;
+    private int id;
+    private String nome;
+    private String data;
+    private String local;
 
-    private ArrayList<Participante> participantes =
-            new ArrayList<>();
+    private int capacidade;
 
-    public Evento(String nomeEvento) {
-        this.nomeEvento = nomeEvento;
+    private double precoIngresso;
+
+    private ArrayList<Atividade> atividades;
+
+    public Evento(
+            int id,
+            String nome,
+            String data,
+            String local,
+            int capacidade,
+            double precoIngresso
+    ){
+
+        this.id=id;
+        this.nome=nome;
+        this.data=data;
+        this.local=local;
+        this.capacidade=capacidade;
+        this.precoIngresso=precoIngresso;
+
+        atividades = new ArrayList<>();
     }
 
-    public void adicionarParticipante(Participante participante) {
-        participantes.add(participante);
+    public void adicionarAtividade(
+            Atividade atividade){
+
+        atividades.add(atividade);
     }
 
-    public void exibirParticipantes() {
+    @Override
+    public void exibir(){
 
-        System.out.println("===== " + nomeEvento + " =====");
+        System.out.println(nome);
 
-        for (Participante participante : participantes) {
-            participante.exibirDados();
-            System.out.println();
+        for(Atividade a:atividades){
+
+            a.exibir();
+
         }
+
     }
 }

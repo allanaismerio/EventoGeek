@@ -1,40 +1,31 @@
-public class Participante extends Pessoa implements Exibivel {
+import java.util.ArrayList;
 
-    private String tipoParticipacao;
+public class Participante extends Pessoa {
 
-    public static final String EVENTO = "Evento Geek";
+    private ArrayList<Inscricao> inscricoes;
 
-    public Participante(String nome, String email, String tipoParticipacao) {
+    public Participante(
+            String nome,
+            String email){
 
-        super(nome, email);
+        super(nome,email);
 
-        this.tipoParticipacao = tipoParticipacao;
+        inscricoes = new ArrayList<>();
     }
 
-    public String getTipoParticipacao() {
-        return tipoParticipacao;
+    public void inscrever(Evento evento){
+
+        Inscricao nova=
+        new Inscricao(
+                inscricoes.size()+1,
+                this,
+                evento
+        );
+
+        inscricoes.add(nova);
+
+        System.out.println(
+        "Inscrito com sucesso!");
     }
 
-    public void setTipoParticipacao(String tipoParticipacao) {
-        this.tipoParticipacao = tipoParticipacao;
-    }
-
-    @Override
-    public void exibirDados() {
-
-        System.out.println("===== PARTICIPANTE =====");
-        System.out.println("Evento: " + EVENTO);
-        System.out.println("Nome: " + nome);
-        System.out.println("Email: " + email);
-        System.out.println("Tipo: " + tipoParticipacao);
-    }
-
-    // Sobrecarga
-    public void cadastrar(String nome) {
-        System.out.println("Participante " + nome + " cadastrado.");
-    }
-
-    public void cadastrar(String nome, String email) {
-        System.out.println("Participante " + nome + " cadastrado com email " + email);
-    }
 }
